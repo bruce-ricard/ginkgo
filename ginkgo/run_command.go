@@ -124,7 +124,12 @@ func (r *SpecRunner) RunSpecs(args []string, additionalArgs []string) {
 		}
 	}
 
-	fmt.Printf("\nGinkgo ran %d %s in %s\n", numSuites, pluralizedWord("suite", "suites", numSuites), time.Since(t))
+	fmt.Printf(
+		"\nGinkgo ran %d %s in %s\n",
+		numSuites,
+		pluralizedWord("suite", "suites", numSuites),
+		time.Since(t)
+	)
 
 	if runResult.Passed {
 		if runResult.HasProgrammaticFocus && strings.TrimSpace(os.Getenv("GINKGO_EDITOR_INTEGRATION")) == "" {
