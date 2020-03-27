@@ -77,10 +77,11 @@ var _ = Describe("Watch", func() {
 	It("should be set up correctly", func() {
 		session = startGinkgoWithGopath("-r")
 		Eventually(session).Should(gexec.Exit(0))
-		Ω(session.Out.Contents()).Should(ContainSubstring("A Suite"))
-		Ω(session.Out.Contents()).Should(ContainSubstring("B Suite"))
-		Ω(session.Out.Contents()).Should(ContainSubstring("C Suite"))
-		Ω(session.Out.Contents()).Should(ContainSubstring("Ginkgo ran 3 suites"))
+		sessionContents := session.Out.Contents()
+		Ω(sessionContents).Should(ContainSubstring("A Suite"))
+		Ω(sessionContents).Should(ContainSubstring("B Suite"))
+		Ω(sessionContents).Should(ContainSubstring("C Suite"))
+		Ω(sessionContents).Should(ContainSubstring("Ginkgo ran 3 suites"))
 	})
 
 	Context("when watching just one test suite", func() {
