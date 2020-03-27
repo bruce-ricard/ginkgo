@@ -77,7 +77,7 @@ var _ = Describe("Watch", func() {
 	It("should be set up correctly", func() {
 		session = startGinkgoWithGopath("-r")
 		Eventually(session).Should(gexec.Exit(0))
-		sessionContents := session.Out.Contents()
+		sessionContents := string(session.Out.Contents())
 		Ω(sessionContents).Should(ContainSubstring("A Suite"))
 		Ω(sessionContents).Should(ContainSubstring("B Suite"))
 		Ω(sessionContents).Should(ContainSubstring("C Suite"))
